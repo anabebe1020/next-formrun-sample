@@ -3,10 +3,9 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 
-// const FORMRUN_API_URL = "https://form.run/api/v1/forms/abe-r-5kuuN4VL0zPjjgCV04K2";
-const FORMRUN_API_URL = "https://form.run/embed/@abe-r-5kuuN4VL0zPjjgCV04K2?embed=direct";
-
 export default function Home() {
+  const formrunApiUrl = process.env.NEXT_PUBLIC_FORMRUN_API_URL;
+  const redirectUrl = process.env.NEXT_PUBLIC_REDIRECT_URL;
   // const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
   //   try {
   //     event.preventDefault();
@@ -42,15 +41,13 @@ export default function Home() {
 
         <form
           id="custom-form"
-          action={FORMRUN_API_URL}
+          action={formrunApiUrl}
           method="POST"
-          // onSubmit={handleSubmit}
         >
           <input type="text" name="_field_3" placeholder="テキストA" required />
           <input type="text" name="_field_4" placeholder="テキストB" required />
 
-          {/* <input type="hidden" name="_redirect" value="https://form.run/@abe-r-5kuuN4VL0zPjjgCV04K2/thanks" /> */}
-          <input type="hidden" name="_redirect" value="./sent" />
+          <input type="hidden" name="_redirect" value={redirectUrl} />
 
           <button type="submit">送信</button>
         </form>
