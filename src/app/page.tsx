@@ -42,6 +42,7 @@ export default function Home() {
         <form
           id="custom-form"
           action={formrunApiUrl}
+          data-formrun-form="@abe-r-5kuuN4VL0zPjjgCV04K2"
           method="POST"
         >
           <input type="text" name="_field_3" placeholder="テキストA" required />
