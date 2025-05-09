@@ -4,7 +4,8 @@ import Image from "next/image";
 import styles from "./page.module.css";
 
 export default function Home() {
-  const formrunApiUrl = process.env.NEXT_PUBLIC_FORMRUN_API_URL;
+  // const formrunApiUrl = process.env.NEXT_PUBLIC_FORMRUN_API_URL;
+  const formrunFormId = process.env.NEXT_PUBLIC_FORMRUN_FORM_ID;
   const redirectUrl = process.env.NEXT_PUBLIC_REDIRECT_URL;
   // const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
   //   try {
@@ -41,16 +42,18 @@ export default function Home() {
 
         <form
           id="custom-form"
-          action={formrunApiUrl}
-          data-formrun-form="@abe-r-5kuuN4VL0zPjjgCV04K2"
+          // action={formrunApiUrl}
+          data-formrun-form={formrunFormId}
           method="POST"
         >
-          <input type="text" name="_field_3" placeholder="テキストA" required />
-          <input type="text" name="_field_4" placeholder="テキストB" required />
+          <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+            <input type="text" name="_field_3" placeholder="テキストA" required />
+            <input type="text" name="_field_4" placeholder="テキストB" required />
 
-          <input type="hidden" name="_redirect" value={redirectUrl} />
+            <input type="hidden" name="_redirect" value={redirectUrl} />
 
-          <button type="submit">送信</button>
+            <button type="submit">送信</button>
+          </div>
         </form>
 
       </main>
