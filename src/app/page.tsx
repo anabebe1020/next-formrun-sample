@@ -40,28 +40,45 @@ export default function Home() {
           priority
         />
 
-        <form className="formrun" action="https://form.run/api/v1/r/cqm93erpznitjczx4wb6usiw" method="post">
+        <form
+          className="formrun"
+          action="https://form.run/api/v1/r/cqm93erpznitjczx4wb6usiw"
+          method="post"
+        >
           <div>
-            <label>お名前</label>
-            <input name="お名前" type="text" />
+            <label>サイトID</label>
+            <input name="サイトID" type="text" data-formrun-required />
+            <div data-formrun-show-if-error="サイトID">入力してください</div>
           </div>
 
           <div>
-            <label>メールアドレス [必須]</label>
-            <input name="メールアドレス" type="text" data-formrun-type="email" data-formrun-required />
-            <div data-formrun-show-if-error="メールアドレス">メールアドレスを正しく入力してください</div>
+            <label>サイトパスワード</label>
+            <input name="サイトパスワード" type="text" data-formrun-required />
+            <div data-formrun-show-if-error="サイトパスワード">入力してください</div>
           </div>
 
           <div>
-            <label>お問い合わせ [必須]</label>
-            <textarea name="お問い合わせ" data-formrun-required></textarea>
-            <div data-formrun-show-if-error="お問い合わせ">お問い合わせ内容を入力してください</div>
+            <label>ショップID</label>
+            <input name="ショップID" type="text" data-formrun-required />
+            <div data-formrun-show-if-error="ショップID">入力してください</div>
           </div>
 
           <div>
-            <label>個人情報利用同意 [必須]</label>
-            <input type="checkbox" name="個人情報利用同意" data-formrun-required />
-            <div data-formrun-show-if-error="個人情報利用同意">同意してください</div>
+            <label>ショップパスワード</label>
+            <input name="ショップパスワード" type="text" data-formrun-required />
+            <div data-formrun-show-if-error="ショップパスワード">入力してください</div>
+          </div>
+
+          <div>
+            <label>公開鍵(.pub ファイル)</label>
+            <textarea name="公開鍵(.pub ファイル)" data-formrun-required></textarea>
+            <div data-formrun-show-if-error="公開鍵(.pub ファイル)">入力してください</div>
+          </div>
+
+          <div>
+            <label>公開鍵Hash</label>
+            <input name="公開鍵Hash" type="text" data-formrun-required />
+            <div data-formrun-show-if-error="公開鍵Hash">入力してください</div>
           </div>
 
           <div className="_formrun_gotcha">
