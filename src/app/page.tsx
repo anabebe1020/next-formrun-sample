@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import styles from "./page.module.css";
+import { useEffect } from "react";
 
 export default function Home() {
   // const formrunApiUrl = process.env.NEXT_PUBLIC_FORMRUN_API_URL;
@@ -28,6 +29,27 @@ export default function Home() {
   //   }
   // };
 
+  useEffect(() => {
+    const form = document.getElementById("my-form") as HTMLFormElement;
+    if (!form) {
+      console.error("Form not found");
+      return;
+    }
+    form.addEventListener("submit", function (e) {
+      e.preventDefault(); // 送信を一旦止める
+      // 値を取り出す
+      const sitePass = (document.getElementById("site-pass") as HTMLInputElement).value;
+      // 加工
+      const encryptedSitePass = 'encrypted' + sitePass;
+      // 値を hidden にセット
+      (document.getElementById("encrypted-site-pass") as HTMLInputElement).value = encryptedSitePass;
+      // 再送信
+      form.submit();
+    });
+    return () => form.removeEventListener("submit", function () {});
+  }
+  , []);
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>
@@ -41,6 +63,7 @@ export default function Home() {
         />
 
         <form
+          id="my-form"
           className="formrun"
           action="https://form.run/api/v1/r/cqm93erpznitjczx4wb6usiw"
           method="post"
@@ -53,7 +76,8 @@ export default function Home() {
 
           <div>
             <label>サイトパスワード</label>
-            <input name="サイトパスワード" type="text" data-formrun-required />
+            <input id="site-pass" name="サイトパスワード（生）" type="text" data-formrun-required />
+            <input id="encrypted-site-pass" type="hidden" name="サイトパスワード" />
             <div data-formrun-show-if-error="サイトパスワード">入力してください</div>
           </div>
 
@@ -65,7 +89,8 @@ export default function Home() {
 
           <div>
             <label>ショップパスワード</label>
-            <input name="ショップパスワード" type="text" data-formrun-required />
+            <input id="shop-pass" name="ショップパスワード（生）" type="text" data-formrun-required />
+            <input id="encrypted-shop-pass" type="hidden" name="ショップパスワード" />
             <div data-formrun-show-if-error="ショップパスワード">入力してください</div>
           </div>
 
