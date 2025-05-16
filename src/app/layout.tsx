@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       {/* eslint-disable-next-line @next/next/no-sync-scripts */}
-      <script src="https://sdk.form.run/js/v2/embed.js"></script>
+      <script src="https://sdk.form.run/js/v2/formrun.js"></script>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
       </body>
